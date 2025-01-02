@@ -42,6 +42,27 @@ Simply download the zip and extract the folder `ibm-plex-sans/fonts/complete` to
 2. Create a `DBconfig.json`, using the provided [DBconfig_template.json](DBconfig_template.json)
 3. Run using your preferred IDE or Maven. Entry is the `Driver.java` file
 
+# GUI Description
+## Main Menu
+![Main menu](documentation/App_MainWindow.png)
+The Main Menu contains at the top a Status for the Database Connection. In case of an error, the error will be output here.  
+Next is the filepath and dialog to look for files on your system. `.tex` files can be selected here.  
+With the following button the `.tex` file and it's linked `.tex`-files (if checked) can be scanned for citation commands.  
+The three buttons at the bottom allow the user to add a bibitem or bibfile to the database or remove an item.
+
+## Add Bib Item Dialogue
+![Add Item Dialogue](documentation/App_AddItemDialogue.png)
+
+By clicking the `Add Bibitem to Database` button, this dialogue opens, allowing the user to specifiy a bib-item to be added to the Database. Supported Items and their required and optional keys can be found [in the next Chapter.](#bibtex-items-and-keys)
+
+## Add Bib File Dialogue
+![Add Bib File Dialogue](documentation/App_AddFileDialogue.png)
+By selecting the file via filebrowser on the right, the file can be read. In case of an error, it will be displayed in the `Status` field.
+
+## Remove Item Dialogue
+![Remove Item Dialogue](documentation/App_RemKeyDialogue.png)
+An item can be removed from the database, if provided the citation key. If the removal process was successful, or if it failed, will be output at the bottom.
+
 # BibTeX Items and keys
 
 Following Bibtex items with the given respective key are supported by the application:
