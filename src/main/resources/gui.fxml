@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="vboxRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" styleClass="windowbg" stylesheets="@gui.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tb130.relational.bibtex.database.RelationalBibtexDB">
+   <children>
+      <Label id="statusLabel" fx:id="statusLabel" alignment="CENTER" prefHeight="125.0" prefWidth="500.0" styleClass="statusLabelClass" text="Status" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
+      </Label>
+      <HBox fx:id="directoryContainer" prefHeight="25.0" prefWidth="500.0">
+         <children>
+            <TextField id="filePathTextField" fx:id="filePathTextField" editable="false" focusTraversable="false" prefHeight="40.0" prefWidth="400.0" promptText="Use the Browser on the right to select a filepath" styleClass="textField">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </TextField>
+            <Button fx:id="directoryButton" mnemonicParsing="false" onAction="#handleDirectoryCall" prefWidth="110.0" styleClass="buttons" text="Browse" textOverrun="CLIP">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets top="20.0" />
+         </VBox.margin>
+      </HBox>
+      <Button fx:id="crawlButton" mnemonicParsing="false" onAction="#handleTeXCall" prefHeight="50.0" prefWidth="500.0" styleClass="buttons" text="Scan .tex for citations and write bibfile">
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" top="20.0" />
+         </VBox.margin>
+         </Button>
+      <HBox fx:id="checkboxContainer" prefHeight="50.0" prefWidth="200.0">
+         <children>
+            <CheckBox id="optionScanLinked" fx:id="optionScanLinked" mnemonicParsing="false" selected="true" styleClass="checkboxes" text="Scan linked tex-files?">
+            </CheckBox>
+         </children>
+         <padding>
+            <Insets left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </HBox>
+      <Button fx:id="addRecordButton" mnemonicParsing="false" onAction="#openAddRecordWindow" prefHeight="50.0" prefWidth="500.0" styleClass="buttons" text="Add Bibitem to Database">
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" top="20.0" />
+         </VBox.margin>
+      </Button>
+      <Button fx:id="addBibfileButton" mnemonicParsing="false" onAction="#openBibWindow" prefHeight="50.0" prefWidth="500.0" styleClass="buttons" text="Add Bibfile to Database">
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" top="20.0" />
+         </VBox.margin>
+      </Button>
+      <Button fx:id="removeBibentryButton" mnemonicParsing="false" onAction="#openRemRecordWindow" prefHeight="50.0" prefWidth="500.0" styleClass="buttons" text="Remove Bibitem from Database">
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" top="20.0" />
+         </VBox.margin>
+      </Button>
+   </children>
+</VBox>

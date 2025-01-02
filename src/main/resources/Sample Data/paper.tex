@@ -1,0 +1,71 @@
+\documentclass[pdftex,a4paper,halfparskip]{scrartcl}
+\usepackage{ngerman}
+\usepackage[latin1]{inputenc} %Zum erkennen von Umlauten
+
+\usepackage[T1]{fontenc} %Font-Encodierung wird auf das T1-Format mit bis zu 256 (anstelle 128 im Default Fontencoder) umgeschaltet
+
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{color}
+
+\title{ Deeplearning - Anforderungen an die Hardware} %Definition des Titels
+\author{Tobias Brandl}	%Definition des Autors
+
+%Beginn des Dokumentkörpers
+\begin{document}
+
+%-----------------------------------------------------------------------------
+\maketitle	%Titel wird erstellt
+
+\begin{abstract}
+Zuerst wird erl\"autert, wie Deeplearning funktioniert und welche Anforderungen es an heutige Hardware besitzt.
+Im Anschluss werden die speziellen Anforderungen an die CPU und GPU erarbeitet, sowie deren Aufgaben erkl\"art.
+\end{abstract}
+
+
+\tableofcontents
+
+\section{Einf\"uhrung und Motivation}
+Motivation
+
+\section{Zusammenfassung}
+Summary
+
+\section{Deep Learning}
+
+\subsection{Funktionsweise}
+Social Media \cite{lecun-nature-15}.
+Kon-\\ventionelle Machine
+
+\begin{itemize}
+        \item Lokale Verbindungen
+        \item Geteilte Gewichte
+        \item Pooling
+        \item Viele Schichten
+\end{itemize}
+
+\subsection{Anforderungen des Deeplearning}
+ReLU: $f(z) = max(0, z)$ \cite{lecun-nature-15}.
+k\"urzen \cite{lecun-nature-15}.
+Netz \cite{benchmark-article} .
+
+
+\section{Aufgaben der CPU}
+Anwendungsfall berechnen \cite{intel-outperform}. Nervensystem Insekt
+
+\section{Aufgaben der GPU}
+Matrixoperationen \cite{gpu-mem-mngmnt}.
+ewqofbwgigfbeligv edswbfedkfgbek \cite{nvidia-tensor}.
+Anwendungen \cite{nvidia-tensor}.
+Tensor-Core Technologie.\cite{nvidia-tensor}
+Taktzyklus.\cite{nvidia-tensor}
+
+\pagebreak
+\section{Ausblick}
+ Toleranz der Trainingsdauer \cite{imagenet-class}.
+
+\bibliographystyle{abbrv}
+
+\bibliography{paperliteratur}
+
+\end{document}

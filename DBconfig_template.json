@@ -1,0 +1,5 @@
+{
+  "jdbcurl":"jdbc:postgresql://{IP}:{PORT}/relational_bibtex_db",
+  "username":"relational_bibtex_user",
+  "password":"password"
+}
