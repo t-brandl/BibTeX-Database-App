@@ -34,7 +34,6 @@ build/
 
 ### Sensitive DB Information ###
 DBconfig.json
-/src/main/resources/IBM Plex Sans Fonts/
 
 logs/
 mvnw*
