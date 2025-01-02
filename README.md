@@ -1,6 +1,6 @@
 # Overview
 The Application was part of my project for the course `Technical Documentation` in 2020.  
-The most popular way to write TeX documents today is with LaTeX, which allows you to adjust document styles with a single line and easily reference literature using the `\cite{citation_key}` command. This references an entry from a bibliography database. The most commonly used tool for this is `BibTeX`, which generates `.bib` files that can be included in documents with `\bibliography{bib-name}`. While effective, `BibTeX` has a major limitation: the bibliography database is local. This is inconvenient when working across multiple devices or in academic settings where individuals must maintain separate, potentially redundant databases.
+`TeX` and its derivatives, like `LaTeX`, have become indispensable tools in academia, publishing, and professional documentation. Their popularity stems from their ability to produce high-quality, beautifully typeset documents with precision and flexibility that far surpass traditional word processors. It allows easily referencing literature using the `\cite{citation_key}` command. This references an entry from a bibliography database. The most commonly used tool for this is `BibTeX`, which generates `.bib` files that can be included in documents with `\bibliography{bib-name}`. While effective, `BibTeX` has a major limitation: the bibliography database is local. This is inconvenient when working across multiple devices or in academic settings where individuals must maintain separate, potentially redundant databases.
 
 This project addresses the issue by introducing a centralized relational database accessible via a desktop client. The client supports multi-device and multi-user workflows, enabling users to select `TeX` documents, scan them for references, and query the keys from the centralized database. The references are saved in a `.bib` file with the same name in the document's directory. The program can also identify and scan linked `TeX` documents for references, if desired.
 
@@ -115,3 +115,5 @@ series    = "",
 `RelationalBibtexDB` is the core of the application, containing the GUI and event handlers. The GUI was created using `JavaFX` and `.fxml`-files with a `css` stylesheet to ensure consistent styling across all UI windows.
 
 # UML Sequence Diagram
+Following Sequence Diagram describes the workflow of the user scanning a `.tex`-file for citations and requesting the missing entries from the shared relational database:
+![UML Sequence Diagram](documentation/UML_Seq_Diag.PNG)
