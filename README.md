@@ -1,5 +1,10 @@
 # Overview
-The Application was part of my project for the course `Technical Documentation`.
+The Application was part of my project for the course `Technical Documentation` in 2020.  
+The most popular way to write TeX documents today is with LaTeX, which allows you to adjust document styles with a single line and easily reference literature using the `\cite{citation_key}` command. This references an entry from a bibliography database. The most commonly used tool for this is `BibTeX`, which generates `.bib` files that can be included in documents with `\bibliography{bib-name}`. While effective, `BibTeX` has a major limitation: the bibliography database is local. This is inconvenient when working across multiple devices or in academic settings where individuals must maintain separate, potentially redundant databases.
+
+This project addresses the issue by introducing a centralized relational database accessible via a desktop client. The client supports multi-device and multi-user workflows, enabling users to select `TeX` documents, scan them for references, and query the keys from the centralized database. The references are saved in a `.bib` file with the same name in the document's directory. The program can also identify and scan linked `TeX` documents for references, if desired.
+
+Through the client’s GUI, users can manage the database by adding or removing references. Future updates will allow importing `.bib` files to automatically populate the database, streamlining bibliography management across devices and teams.
 
 # Requirements  
 
@@ -39,6 +44,8 @@ Simply download the zip and extract the folder `ibm-plex-sans/fonts/complete` to
 
 # BibTeX Items and keys
 
+Following Bibtex items with the given respective key are supported by the application:
+
 | Index         | 0   | 1    | 2      | 3      | 4       | 5     | 6         | 7       | 8         | 9    | 10           | 11           | 12          | 13     | 14     | 15     | 16   | 17      | 18      | 19    | 20     | 21    | 22   |
 |---------------|-----|------|--------|--------|---------|-------|-----------|---------|-----------|------|--------------|--------------|-------------|--------|--------|--------|------|---------|---------|-------|--------|-------|------|
 | Value         | key | type | author | editor | address | title | booktitle | journal | publisher | year | howpublished | organization | institution | school | volume | series | type | edition | chapter | month | number | pages | note |
@@ -70,12 +77,20 @@ The following uML Class Diagram describes the core functions of the architecture
 `Bibitem` is the most important class in the document. Every item has an array containing an entry for each of the 23 bibtex keys. The `getItems()` method returns the array, the `toString()` method overrides the default `toString` function to look like a classic entry in a bibtex file, e.g.:
 ```BibTeX
 @conference{Xconference,   
-author = "",
-title  = "",
-...
+author    = "",
+title     = "",
+booktitle = "",
+editor    = "",
+volume    = "",
+number    = "",
+series    = "",
 }
 ``` 
 
-
+`outputFiles` manages all the file outout. `writeToBib()` writes the bibliography to a `.bib` file. `updateBibRef()` is not yet implemented.  
+`LoadConfigurations` has the task to load configuration files for the database connection. `loadDBconfig()` reads the `DBconfig.json` in the same directory and returns the JDBC URL, username and password.  
+`DBAccess` controls all task related to the database. Adding entries to the database, removing entries from them and querying the database for entries.  
+`CrawlFiles` has the task of crawling and parsing given documents (`.tex` files) for `cite` and `nocite` commands, as well as `input` and `include`.  
+`RelationalBibtexDB` is the core of the application, containing the GUI and event handlers. The GUI was created using `JavaFX` and `.fxml`-files with a `css` stylesheet to ensure consistent styling across all UI windows.
 
 # UML Sequence Diagram
