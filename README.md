@@ -8,15 +8,15 @@ Through the client’s GUI, users can manage the database by adding or removing 
 
 # Requirements  
 
-**Java**: JDK 23 or higher  
+**Java**: JDK 13 or higher (currently set to 23)  
 **Maven**: 3.9.8 or higher  
-**PostgreSQL**: 17.2 or higher  
-**Optional: pgAdmin 4**: To manage the Postgre database
+**PostgreSQL**: 12 or higher (currently set to 17.2)  
+**Optional: pgAdmin 4**: To manage the Postgres database
 
 ## Key Dependencies
 The project uses the following libraries:  
 
-- **JavaFX** (17.0.6)  
+- **JavaFX** (14, but currently set to 17.0.6)  
   - `javafx-controls`  
   - `javafx-fxml`  
   - `javafx-graphics`  
