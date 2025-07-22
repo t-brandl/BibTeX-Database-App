@@ -10,7 +10,7 @@ import java.io.IOException;
  * This class is used to load any and all Configurations necessary in order to run the program
  */
 public class LoadConfigurations {
-    private static Logger log = LogManager.getLogger(LoadConfigurations.class);
+    private static final Logger log = LogManager.getLogger(LoadConfigurations.class);
 
     /**
      * Reads the configuration file DBconfig.json and returns the jdbcurl, the username and the password

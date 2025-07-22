@@ -12,7 +12,7 @@ Through the client’s GUI, users can manage the database by adding or removing 
 **Java**: JDK 21 or higher  
 **Maven**: 3.9.8 or higher  
 **PostgreSQL**: 17.5 or higher  
-**Optional: pgAdmin 4**: To manage the Postgre database
+**Optional: pgAdmin 4**: To manage the Postgres database
 
 ## Key Dependencies
 The project uses the following libraries:  
@@ -22,8 +22,8 @@ The project uses the following libraries:
   - `javafx-fxml`  
 - **JUnit** (4.13.2): For unit testing.  
 - **Log4j** (2.23.1): For logging and application diagnostics.  
-- **postgresql** (42.7.2): PostgreSQL Driver.  
-- **jackson-databind** (2.13.4.2): To load the PostgreSQL DB credentials.
+- **postgresql** (42.7.7): PostgreSQL Driver.  
+- **jackson-databind** (2.19.2): To load the PostgreSQL DB credentials.
 
 All dependencies are managed through Maven. For the full list, see the `pom.xml` file.
 

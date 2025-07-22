@@ -28,7 +28,7 @@ import java.util.Set;
 
 public class RelationalBibtexDB extends Application {
 
-    private static Logger log = LogManager.getLogger(RelationalBibtexDB.class);
+    private static final Logger log = LogManager.getLogger(RelationalBibtexDB.class);
     @FXML
     private TextField citekeyRemDialogue;
     @FXML
@@ -125,7 +125,7 @@ public class RelationalBibtexDB extends Application {
             ;
             statusLabel.setText("Successfully selected a directory");
             filePathTextField.setText(file.getPath());
-            log.info("Successfully selected a directory");
+            log.info("Successfully selected a directory - directory call");
         }
     }
 
@@ -144,7 +144,7 @@ public class RelationalBibtexDB extends Application {
         if (file != null) {
             bibCrawlStatus.setText("Successfully selected a directory");
             bibFileTextPath.setText(file.getPath());
-            log.info("Successfully selected a directory");
+            log.info("Successfully selected a directory - bib directory call");
         }
     }
 
@@ -170,22 +170,22 @@ public class RelationalBibtexDB extends Application {
             log.debug("Successfully removed one item from the Database!");
         } catch (IOException e) {
             remRecordStatus.setText("Please specify a DBconfig.json containing jdbcurl, username and password");
-            log.error("Please specify a DBconfig.json containing jdbcurl, username and password:\n" + e.getLocalizedMessage());
+            log.error("Please specify a DBconfig.json containing jdbcurl, username and password:\n{}", e.getLocalizedMessage());
             return;
         } catch (ClassNotFoundException e) {
             remRecordStatus.setText("JDBC Driver was not found");
-            log.error("JDBC Driver was not found:\n" + e.getLocalizedMessage());
+            log.error("JDBC Driver was not found:\n{}", e.getLocalizedMessage());
             return;
         } catch (SQLException e) {
             remRecordStatus.setText("Cannot establish a DB connection, wrong credentials or URL maybe");
-            log.error("Cannot establish a DB connection, wrong credentials or URL maybe:\n" + e.getLocalizedMessage());
+            log.error("Cannot establish a DB connection, wrong credentials or URL maybe:\n{}", e.getLocalizedMessage());
             return;
         }
         try {
             dbaccess.remRecordFromDB(val);
         } catch (SQLException e) {
             remRecordStatus.setText("Could not remove Entry.\nWrong key maybe?");
-            log.error("Could not remove Entry.\nWrong key maybe?\n" + e.getLocalizedMessage());
+            log.error("Could not remove Entry.\nWrong key maybe?\n{}", e.getLocalizedMessage());
             return;
         }
     }
@@ -211,15 +211,15 @@ public class RelationalBibtexDB extends Application {
             dbaccess = getDBaccess();
         } catch (IOException e) {
             addRecordStatus.setText("Please specify a DBconfig.json containing jdbcurl, username and password");
-            log.error("Please specify a DBconfig.json containing jdbcurl, username and password:\n" + e.getLocalizedMessage());
+            log.error("Please specify a DBconfig.json containing jdbcurl, username and password:\n{}", e.getLocalizedMessage());
             return;
         } catch (ClassNotFoundException e) {
             addRecordStatus.setText("JDBC Driver was not found");
-            log.error("JDBC Driver was not found:\n" + e.getLocalizedMessage());
+            log.error("JDBC Driver was not found:\n{}", e.getLocalizedMessage());
             return;
         } catch (SQLException e) {
             addRecordStatus.setText("Cannot establish a DB connection, wrong credentials or URL maybe");
-            log.error("Cannot establish a DB connection, wrong credentials or URL maybe:\n" + e.getLocalizedMessage());
+            log.error("Cannot establish a DB connection, wrong credentials or URL maybe:\n{}", e.getLocalizedMessage());
             return;
         }
         try {
@@ -255,15 +255,15 @@ public class RelationalBibtexDB extends Application {
                 dbaccess = getDBaccess();
             } catch (IOException e) {
                 statusLabel.setText("Please specify a DBconfig.json containing jdbcurl, username and password");
-                log.error("Please specify a DBconfig.json containing jdbcurl, username and password:\n" + e.getLocalizedMessage());
+                log.error("Please specify a DBconfig.json containing jdbcurl, username and password:\n{}", e.getLocalizedMessage());
                 return;
             } catch (ClassNotFoundException e) {
                 statusLabel.setText("JDBC Driver was not found");
-                log.error("JDBC Driver was not found:\n" + e.getLocalizedMessage());
+                log.error("JDBC Driver was not found:\n{}", e.getLocalizedMessage());
                 return;
             } catch (SQLException e) {
                 statusLabel.setText("Cannot establish a DB connection, wrong credentials or URL maybe");
-                log.error("Cannot establish a DB connection, wrong credentials or URL maybe:\n" + e.getLocalizedMessage());
+                log.error("Cannot establish a DB connection, wrong credentials or URL maybe:\n{}", e.getLocalizedMessage());
                 return;
             }
             statusLabel.setText("Status");
@@ -282,25 +282,25 @@ public class RelationalBibtexDB extends Application {
                 }
             }
             linkedFiles.add(fileName + ".tex");
-            log.info("LinkedFiles:\n" + String.join(", ",linkedFiles));
+            log.info("LinkedFiles:\n{}", String.join(", ", linkedFiles));
             statusLabel.setText("Crawling .tex-file(s) for cite commands");
             linkedFiles.forEach(item -> {
                 try {
                     Set<String> temp = crawler.crawlTexForCite(item);
                     for (String i : temp) {
                         cites.add(i);
-                        log.info("attempt to add to cites: " + i);
+                        log.info("attempt to add to cites: {}", i);
                     }
                 } catch (IOException e) {
                     statusLabel.setText("Couldnt read file" + item);
-                    log.error("Couldnt read file" + item, e);
+                    log.error("Couldnt read file{}", item, e);
                     return;
                 }
             });
             Set<String[]> dbRecords = new HashSet<>();
             try {
                 statusLabel.setText("fetching database query");
-                log.info("cites:\n" + String.join(", ",cites));
+                log.info("cites:\n{}", String.join(", ", cites));
                 dbRecords = dbaccess.getRecordsFromDB(cites);
                 log.info("DB successfully queried");
             } catch (SQLException e) {
@@ -314,7 +314,7 @@ public class RelationalBibtexDB extends Application {
             List<Bibitem> bibitems = new ArrayList<>();
             for (String[] item : dbRecords) {
                     try {
-                        log.info(item.length + " " + String.join(", ", item));
+                        log.info("{} {}", item.length, String.join(", ", item));
                         Bibitem tempItem = new Bibitem(item);
                         bibitems.add(tempItem);
                     } catch (NotValidBibentryException e) {
@@ -323,7 +323,7 @@ public class RelationalBibtexDB extends Application {
                         return;
                     }
             }
-            log.info("Bibitems:\n" + String.join("\n\n",bibitems.toString()));
+            log.info("Bibitems:\n{}", String.join("\n\n", bibitems.toString()));
             try {
                 statusLabel.setText("Writing Bibfile");
                 OutputFiles out = new OutputFiles();
@@ -427,13 +427,13 @@ public class RelationalBibtexDB extends Application {
             dbaccess = getDBaccess();
         } catch (IOException e) {
             statusLabel.setText("Please specify a DBconfig.json containing jdbcurl, username and password");
-            log.error("Please specify a DBconfig.json containing jdbcurl, username and password:\n" + e.getLocalizedMessage());
+            log.error("Please specify a DBconfig.json containing jdbcurl, username and password:\n{}", e.getLocalizedMessage());
         } catch (ClassNotFoundException e) {
             statusLabel.setText("JDBC Driver was not found");
-            log.error("JDBC Driver was not found:\n" + e.getLocalizedMessage());
+            log.error("JDBC Driver was not found:\n{}", e.getLocalizedMessage());
         } catch (SQLException e) {
             statusLabel.setText("Cannot establish a DB connection, wrong credentials or URL maybe");
-            log.error("Cannot establish a DB connection, wrong credentials or URL maybe:\n" + e.getLocalizedMessage());
+            log.error("Cannot establish a DB connection, wrong credentials or URL maybe:\n{}", e.getLocalizedMessage());
         }
         Parent root = FXMLLoader.load(getClass().getResource("/gui.fxml"));
         primaryStage.setTitle("Relational BibTeX Database");

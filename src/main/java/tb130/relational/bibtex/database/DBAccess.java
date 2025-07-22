@@ -17,11 +17,11 @@ import java.util.Set;
  */
 public class DBAccess {
 
-    private static Logger log = LogManager.getLogger(DBAccess.class);
+    private static final Logger log = LogManager.getLogger(DBAccess.class);
     private final PreparedStatement addRecord;
     private final PreparedStatement getQuery;
     private final PreparedStatement remQuery;
-    private Connection conn;
+    private final Connection conn;
 
     /**
      * Constructor to innitiate the DB connection. Settings are to be saved in a DBconfig.json

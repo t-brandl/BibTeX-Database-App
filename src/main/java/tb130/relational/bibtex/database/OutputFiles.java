@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
  */
 public class OutputFiles {
 
-    private static Logger log = LogManager.getLogger(OutputFiles.class);
+    private static final Logger log = LogManager.getLogger(OutputFiles.class);
 
     /**
      * This method writes the Bibitems to a Bibfile
@@ -30,7 +30,7 @@ public class OutputFiles {
                 writer.write(item.toString());
             }
         } catch(Exception e) {
-            log.error("Something went wrong writing to the file:\n" + e.getLocalizedMessage());
+            log.error("Something went wrong writing to the file:\n{}", e.getLocalizedMessage());
             throw new IOException(e);
         }
         return true;

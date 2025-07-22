@@ -16,7 +16,7 @@ import java.util.stream.Stream;
  * This class handles all the file crawling
  */
 public class CrawlFiles {
-    private static Logger log = LogManager.getLogger(CrawlFiles.class);
+    private static final Logger log = LogManager.getLogger(CrawlFiles.class);
 
     /**
      * Crawls the given TeX-file with the set pattern and returns the specified capture group

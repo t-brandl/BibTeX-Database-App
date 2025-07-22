@@ -74,12 +74,12 @@ public class Bibitem {
                             "\nIt contains/misses required Values that it shouldnt\n" + values);
                 break;
             case "PHDTHESIS":
-                if ((isEmpty(items[2])) || (isEmpty(items[5])) || (isEmpty(items[9])) || (values[13].isEmpty()))
+                if ((isEmpty(items[2])) || (isEmpty(items[5])) || (isEmpty(items[9])) || (isEmpty(items[13])))
                     throw new NotValidBibentryException("Incorrect Bibitem: " + type +
                             "\nIt contains/misses required Values that it shouldnt\n" + values);
                 break;
             case "MASTERSTHESIS":
-                if ((isEmpty(items[2])) || (isEmpty(items[5])) || (isEmpty(items[9])) || (values[13].isEmpty()))
+                if ((isEmpty(items[2])) || (isEmpty(items[5])) || (isEmpty(items[9])) || (isEmpty(items[13])))
                     throw new NotValidBibentryException("Incorrect Bibitem: " + type +
                             "\nIt contains/misses required Values that it shouldnt\n" + values);
                 break;
@@ -91,12 +91,12 @@ public class Bibitem {
                             "\nIt contains/misses required Values that it shouldnt\n" + values);
                 break;
             case "TECHREPORT":
-                if ((isEmpty(items[2])) || (isEmpty(items[5])) || (isEmpty(items[9])) || (values[12].isEmpty()))
+                if ((isEmpty(items[2])) || (isEmpty(items[5])) || (isEmpty(items[9])) || (isEmpty(items[12])))
                     throw new NotValidBibentryException("Incorrect Bibitem: " + type +
                             "\nIt contains/misses required Values that it shouldnt\n" + values);
                 break;
             case "UNPUBLISHED":
-                if ((isEmpty(items[2])) || (isEmpty(items[5])) || (values[22].isEmpty()))
+                if ((isEmpty(items[2])) || (isEmpty(items[5])) || (isEmpty(items[22])))
                     throw new NotValidBibentryException("Incorrect Bibitem: " + type +
                             "\nIt contains/misses required Values that it shouldnt\n" + values);
                 break;
