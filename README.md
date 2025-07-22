@@ -1,5 +1,6 @@
+![Build Status](https://github.com/t-brandl/BibTeX-Database-App/actions/workflows/maven.yml/badge.svg)
+
 # Overview
-The Application was part of my project for the course `Technical Documentation` in 2020.  
 `TeX` and its derivatives, like `LaTeX`, have become indispensable tools in academia, publishing, and professional documentation. Their popularity stems from their ability to produce high-quality, beautifully typeset documents with precision and flexibility that far surpass traditional word processors. It allows easily referencing literature using the `\cite{citation_key}` command. This references an entry from a bibliography database. The most commonly used tool for this is `BibTeX`, which generates `.bib` files that can be included in documents with `\bibliography{bib-name}`. While effective, `BibTeX` has a major limitation: the bibliography database is local. This is inconvenient when working across multiple devices or in academic settings where individuals must maintain separate, potentially redundant databases.
 
 This project addresses the issue by introducing a centralized relational database accessible via a desktop client. The client supports multi-device and multi-user workflows, enabling users to select `TeX` documents, scan them for references, and query the keys from the centralized database. The references are saved in a `.bib` file with the same name in the document's directory. The program can also identify and scan linked `TeX` documents for references, if desired.
@@ -8,22 +9,19 @@ Through the client’s GUI, users can manage the database by adding or removing 
 
 # Requirements  
 
-**Java**: JDK 13 or higher (currently set to 23)  
+**Java**: JDK 21 or higher  
 **Maven**: 3.9.8 or higher  
-**PostgreSQL**: 12 or higher (currently set to 17.2)  
-**Optional: pgAdmin 4**: To manage the Postgres database
+**PostgreSQL**: 17.5 or higher  
+**Optional: pgAdmin 4**: To manage the Postgre database
 
 ## Key Dependencies
 The project uses the following libraries:  
 
-- **JavaFX** (14, but currently set to 17.0.6)  
+- **JavaFX** 22  
   - `javafx-controls`  
   - `javafx-fxml`  
-  - `javafx-graphics`  
-  - `javafx-media`  
-  - `javafx-base`  
-- **JUnit** (4.13.1): For unit testing.  
-- **Log4j** (2.17.1): For logging and application diagnostics.  
+- **JUnit** (4.13.2): For unit testing.  
+- **Log4j** (2.23.1): For logging and application diagnostics.  
 - **postgresql** (42.7.2): PostgreSQL Driver.  
 - **jackson-databind** (2.13.4.2): To load the PostgreSQL DB credentials.
 
