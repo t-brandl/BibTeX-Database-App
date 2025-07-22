@@ -7,8 +7,7 @@ This project addresses the issue by introducing a centralized relational databas
 
 Through the client’s GUI, users can manage the database by adding or removing references. Future updates will allow importing `.bib` files to automatically populate the database, streamlining bibliography management across devices and teams.
 
-# Requirements  
-
+# Requirements
 **Java**: JDK 21 or higher  
 **Maven**: 3.9.8 or higher  
 **PostgreSQL**: 17.5 or higher  
